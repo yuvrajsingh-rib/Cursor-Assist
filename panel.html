@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CursorAssist</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/panel.ts"></script>
+  </head>
+  <body class="panel">
+    <div class="card" id="card">
+      <section id="menu-view">
+        <form id="task-form" class="task">
+          <span class="task-icon" data-icon="sparkle"></span>
+          <textarea id="task" rows="1" placeholder="Describe a task…" spellcheck="false"></textarea>
+          <div class="listening" id="listening" hidden>
+            <span class="meter" id="meter"><i></i><i></i><i></i><i></i><i></i></span>
+            <span id="listening-label">Listening</span>
+            <span class="timer" id="timer">0:00</span>
+          </div>
+          <button type="button" class="ghost icon mic" id="mic" title="Dictate: click to start and stop, or hold to talk" data-icon="mic"></button>
+          <button type="submit" class="ghost icon run" id="task-run" title="Run task (Enter)" data-icon="send" hidden></button>
+        </form>
+        <p class="task-note" id="task-note" hidden></p>
+        <div class="actions" id="actions" role="menu"></div>
+        <button class="row recent" id="recent-row" hidden>
+          <span data-icon="clock"></span><span>Recent results</span><span class="count" id="recent-count"></span>
+        </button>
+      </section>
+
+      <section id="result-view" hidden>
+        <div class="result-head">
+          <button class="ghost icon" id="back" title="Back" data-icon="back"></button>
+          <span class="result-title" id="result-title"></span>
+          <button class="ghost icon close" title="Close (Esc)" data-icon="close"></button>
+        </div>
+        <div class="result" id="result" aria-live="polite"></div>
+        <div class="result-foot">
+          <span class="status" id="status"></span>
+          <button class="ghost icon" id="stop" title="Stop" data-icon="stop" hidden></button>
+          <button class="ghost icon" id="retry" title="Try again" data-icon="retry"></button>
+          <button class="ghost icon" id="copy" title="Copy" data-icon="copy"></button>
+          <button id="replace" class="primary">Replace</button>
+        </div>
+      </section>
+
+      <section id="history-view" hidden>
+        <div class="result-head">
+          <span class="history-title">Recent results</span>
+          <button class="ghost icon close" title="Close (Esc)" data-icon="close"></button>
+        </div>
+        <div class="history" id="history-list"></div>
+        <p class="history-note">Kept in memory only · cleared when CursorAssist quits</p>
+      </section>
+    </div>
+  </body>
+</html>
